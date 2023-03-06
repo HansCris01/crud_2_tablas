@@ -74,7 +74,7 @@ class PersonaController extends Controller
        //Combo box de documento
        $datos['documentos']=Documento::where("estado","=",1)->select("codigo_documento","descripcion")->get();
 
-       $persona = Persona::select("codigo_persona","nombre","apellido_paterno","apellido_materno","dni","documentos.descripcion")->join('documentos', 'personas.codigo_documento', '=', 'documentos.codigo_documento')->findOrfail($codigo_persona);
+       $persona = Persona::select("codigo_persona","nombre","apellido_paterno","apellido_materno","dni","documentos.descripcion","personas.codigo_documento")->join('documentos', 'personas.codigo_documento', '=', 'documentos.codigo_documento')->findOrfail($codigo_persona);
        return view('persona.editar', compact('persona'),$datos);
     }
 
